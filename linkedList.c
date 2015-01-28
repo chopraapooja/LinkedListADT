@@ -8,6 +8,14 @@ Node * create_node(void *data) {
 	return n;
 }
 
+LinkedList createList(void) {
+	LinkedList list;
+	list.head = NULL;
+	list.tail = NULL;
+	list.count = 0;
+	return list;
+}
+
 int parseInt(void *ref){
 	return *(int*)(ref);
 }

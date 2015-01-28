@@ -26,3 +26,11 @@ void test_create_node_can_create_node_having_string_data() {
 	assert(n->next == NULL);
 	free(n);
 }
+
+void test_createList_will_give_empty_list() {
+	LinkedList list = createList();
+	assert(list.head == NULL);
+	assert(list.tail == NULL);
+	assert(list.count == NULL);
+}
+
