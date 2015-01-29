@@ -19,12 +19,14 @@ LinkedList createList(void) {
 }
 
 int add_to_list(LinkedList *list,Node *node) {
+	if(!node) return 0;
 	if(list->tail == NULL) {
 		list->head = node;
 		list->tail = node;
+	} else{
+		list->tail->next = node;
+		list->tail = node;
 	}
-	list->tail->next = node;
-	list->tail = node;	
 	list->count++; 
 	return DONE;
 }

@@ -37,11 +37,17 @@ void test_createList_will_give_empty_list() {
 	assert(list.count == NULL);
 }
 
-void test_add_to_list_should_say_YUP_when_node_is_added_to_List() {
+void test_add_to_list_should_say_YUP_when_operation_is_successful() {
 	LinkedList list = createList();
 	Node *node = create_node(NULL);
 	int doesCreated = add_to_list(&list, node);
 	assert(doesCreated == YUP);
+}
+
+void test_add_to_list_should_say_NOPE_when_operation_is_unsuccessful() {
+	LinkedList list = createList();
+	int doesCreated = add_to_list(&list, NULL);
+	assert(doesCreated == NOPE);
 }
 
 void test_new_node_should_be_added_at_the_end_of_list() {
@@ -55,3 +61,53 @@ void test_new_node_should_be_added_at_the_end_of_list() {
 	assert(list.tail == node2);
 }
 
+void test_adding_new_node_should_increment_count_of_nodes_in_list() {
+	LinkedList list = createList();
+	Node *node1 = create_node("I am node1");
+	Node *node2 = create_node("I am node2");
+
+	assert(list.count == 0);
+	add_to_list(&list, node1);
+	assert(list.count == 1);
+	add_to_list(&list, node2);
+	assert(list.count == 2);	
+}
+
+void test_adding_a_node_in_a_empty_list_should_update_both_the_head_and_tail_of_the_list() {
+	LinkedList list = createList();
+	Node *node = create_node("I am a new node");
+
+	add_to_list(&list, node);
+	assert(list.head == node);
+	assert(list.tail == node);
+}
+
+void test_adding_a_node_in_a_nonEmpty_list_should_not_change_the_head_of_list() {
+	Node *node1 = create_node("I am node1");
+	Node *node2 = create_node("I am node2");
+	LinkedList list = {node1, node1, 1};
+
+	add_to_list(&list, node2);
+	assert(list.head == node1);
+}
+
+void test_a_node_should_be_accessble_through_the_front_node_in_a_list() {
+	LinkedList list = createList();
+	Node *node1 = create_node("I am node1");
+	Node *node2 = create_node("I am node2");
+
+	add_to_list(&list, node1);
+	add_to_list(&list, node2);
+	assert(list.head->next == node2);	
+}
+
+void test_next_node_pointer_of_last_node_in_the_list_should_be_NULL() {
+	LinkedList list = createList();
+	Node *node1 = create_node("I am node1");
+	Node *node2 = create_node("I am node2");
+
+	add_to_list(&list, node1);
+	assert(list.head->next == NULL);
+	add_to_list(&list, node2);
+	assert(((Node*)list.head->next)->next == NULL);
+}
