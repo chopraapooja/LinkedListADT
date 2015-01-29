@@ -16,6 +16,8 @@ struct LinkedList
 Node* create_node(void *data);
 LinkedList createList(void);
 int add_to_list(LinkedList *,Node *);
+void* get_first_element(LinkedList list);
+void* get_last_element(LinkedList list);
 
 int parseInt(void *ref);
 char* parseString(void *ref);

@@ -8,6 +8,18 @@ typedef char* String;
 #define YUP 1
 #define NOPE 0
 
+LinkedList sampleList;
+
+void setup() {
+	Node *node1 = create_node("I am node1");
+	Node *node2 = create_node("I am node2");
+	Node *node3 = create_node("I am Last node");
+	sampleList = createList();
+	add_to_list(&sampleList, node1);
+	add_to_list(&sampleList, node2);	
+	add_to_list(&sampleList, node3);		
+}
+
 void test_nextNode_field_of_newly_created_node_should_be_null() {
 	Node *n = create_node(NULL);
 	assert(n->next == NULL);
@@ -110,4 +122,12 @@ void test_next_node_pointer_of_last_node_in_the_list_should_be_NULL() {
 	assert(list.head->next == NULL);
 	add_to_list(&list, node2);
 	assert(((Node*)list.head->next)->next == NULL);
+}
+
+void test_get_first_element_should_give_data_of_head_node() {
+	assert(get_first_element(sampleList) == "I am node1");
+}
+
+void test_get_last_element_should_give_data_of_tail_node() {
+	assert(get_last_element(sampleList) == "I am Last node");
 }
