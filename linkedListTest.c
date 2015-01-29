@@ -7,17 +7,26 @@ typedef char* String;
 
 #define YUP 1
 #define NOPE 0
+#define NODE_COUNT 6
 
-LinkedList sampleList;
+LinkedList stringList, numberList;
+Node *nodes[NODE_COUNT];
+int numbers[] = {1,2,3,4,5};
+
+void increment(int *num){
+	*num++; 
+}
 
 void setup() {
-	Node *node1 = create_node("I am node1");
-	Node *node2 = create_node("I am node2");
-	Node *node3 = create_node("I am Last node");
-	sampleList = createList();
-	add_to_list(&sampleList, node1);
-	add_to_list(&sampleList, node2);	
-	add_to_list(&sampleList, node3);		
+	nodes[0] = create_node("I am node1");
+	nodes[1] = create_node("I am node2");
+	nodes[2] = create_node("I am Last node");
+
+	stringList = createList();
+
+	add_to_list(&stringList, nodes[0]);
+	add_to_list(&stringList, nodes[1]);	
+	add_to_list(&stringList, nodes[2]);
 }
 
 void test_nextNode_field_of_newly_created_node_should_be_null() {
@@ -125,7 +134,7 @@ void test_next_node_pointer_of_last_node_in_the_list_should_be_NULL() {
 }
 
 void test_get_first_element_should_give_data_of_head_node() {
-	assert(get_first_element(sampleList) == "I am node1");
+	assert(get_first_element(stringList) == "I am node1");
 }
 
 void test_first_element_and_last_element_of_list_should_be_same_in_one_node_list() {
@@ -147,5 +156,30 @@ void test_last_element_of_empty_list_should_be_NULL() {
 }
 
 void test_get_last_element_should_give_data_of_tail_node() {
-	assert(get_last_element(sampleList) == "I am Last node");
+	assert(get_last_element(stringList) == "I am Last node");
+}
+
+void test_getElementAt1(){
+	assert(getElementAt(stringList,0) == "I am node1");
+}
+
+void test_getElementAt2(){
+	assert(getElementAt(stringList,1) == "I am node2");
+}
+
+void test_getElementAt3(){
+	assert(getElementAt(stringList,2) == "I am Last node");
+}
+
+void test_getElementAt4(){
+	assert(getElementAt(stringList,3) == NULL);
+}
+
+void test_getElementAt5(){
+	assert(getElementAt(stringList,-1) == NULL);
+}
+
+void test_getElementAt6(){
+	LinkedList list = createList();
+	assert(getElementAt(list,5) == NULL);
 }

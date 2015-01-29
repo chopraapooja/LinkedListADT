@@ -49,5 +49,19 @@ char* parseString(void *ref){
 	return *(char**)(ref);
 }
 
+void traverse(LinkedList list, void (*operation)(void *data)) {
+	Node *walker = list.head;
+	while(!walker){	operation(walker->data); }
+}
+
+void* getElementAt(LinkedList list, int index) {
+	Node *walker = list.head;
+	int i;
+	if(index >= list.count || index < 0) return NULL;
+	for (i = 0; i < index; ++i) {
+		walker = walker->next;
+	}
+	return walker->data;
+}
 
 
