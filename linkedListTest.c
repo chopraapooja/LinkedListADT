@@ -159,27 +159,13 @@ void test_get_last_element_should_give_data_of_tail_node() {
 	assert(get_last_element(stringList) == "I am Last node");
 }
 
-void test_getElementAt1(){
+void test_getElementAt_should_give_data_of_node_at_provided_index(){
 	assert(getElementAt(stringList,0) == "I am node1");
-}
-
-void test_getElementAt2(){
 	assert(getElementAt(stringList,1) == "I am node2");
-}
-
-void test_getElementAt3(){
 	assert(getElementAt(stringList,2) == "I am Last node");
 }
 
-void test_getElementAt4(){
+void test_getElementAt_should_give_NULL_when_index_is_invalid(){
 	assert(getElementAt(stringList,3) == NULL);
-}
-
-void test_getElementAt5(){
 	assert(getElementAt(stringList,-1) == NULL);
-}
-
-void test_getElementAt6(){
-	LinkedList list = createList();
-	assert(getElementAt(list,5) == NULL);
 }
