@@ -128,6 +128,24 @@ void test_get_first_element_should_give_data_of_head_node() {
 	assert(get_first_element(sampleList) == "I am node1");
 }
 
+void test_first_element_and_last_element_of_list_should_be_same_in_one_node_list() {
+	LinkedList list = createList();
+	Node *node = create_node("I am the first node");
+	
+	add_to_list(&list, node);
+	assert(get_first_element(list) == get_last_element(list));
+}
+
+void test_first_element_of_empty_list_should_be_NULL() {
+	LinkedList list = createList();
+	assert(get_first_element(list) == NULL);
+}
+
+void test_last_element_of_empty_list_should_be_NULL() {
+	LinkedList list = createList();
+	assert(get_last_element(list) == NULL);
+}
+
 void test_get_last_element_should_give_data_of_tail_node() {
 	assert(get_last_element(sampleList) == "I am Last node");
 }
