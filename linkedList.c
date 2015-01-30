@@ -74,6 +74,7 @@ int indexOf(LinkedList list, void *element) {
 
 Node* getNodeAt(LinkedList list, int index){
 	Node *walker = list.head; int i;
+	if(index < 0 || index >= list.count) return NULL;
 	for (i = 1; i <= index; ++i) {
 		walker = walker->next;
 	}
@@ -90,5 +91,25 @@ int asArray(LinkedList list, void **result) {
 	}
 	*result = r;
 	return list.count;
+}
+
+void* deleteElementAt(LinkedList *list, int index) {
+	Node *prev, *next, *this;
+	prev = getNodeAt(*list, index-1);
+	next = getNodeAt(*list, index+1);
+	this = getNodeAt(*list, index);
+	if(!this) return NULL;
+
+	if(list->head == this){
+		list->head = next;
+	}
+	if(list->tail == this){
+		list->tail = prev;
+	}
+	if(index > 0 && index < list->count){
+		this->next = NULL;
+		prev->next = next;
+	}
+	return this->data;
 }
 

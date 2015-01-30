@@ -178,3 +178,37 @@ void test_asArray() {
 	assert(str[1] == "I am node2");
 	assert(str[2] == "I am Last node");
 }
+
+void test_deleteElementAt_the_middle() {
+	String deletedElement = deleteElementAt(&stringList, 1);
+	assert(deletedElement == "I am node2");
+	assert(stringList.head->next == nodes[2]);	
+}
+
+void test_deleteElementAt_the_beginning() {
+	String deletedElement = deleteElementAt(&stringList, 0);
+	assert(deletedElement == "I am node1");
+	assert(stringList.head == nodes[1]);
+}
+
+void test_deleteElementAt_the_end() {
+	String deletedElement = deleteElementAt(&stringList, 2);
+	assert(deletedElement == "I am Last node");
+	assert(stringList.tail == nodes[1]);
+}
+
+void test_deleteElementAt_the_emptyList() {
+	String deletedElement = deleteElementAt(&stringList, 3);
+	assert(deletedElement == NULL);
+}
+
+void test_delete_only_element_in_the_list() {
+	LinkedList list = createList();
+	String deletedElement;
+
+	add_to_list(&list, nodes[0]);
+	deletedElement = deleteElementAt(&list, 0);
+	assert(deletedElement == "I am node1");
+	assert(list.head == NULL);	
+	assert(list.tail == NULL);	
+}
