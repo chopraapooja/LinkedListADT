@@ -169,3 +169,12 @@ void test_getElementAt_should_give_NULL_when_index_is_invalid(){
 	assert(getElementAt(stringList,3) == NULL);
 	assert(getElementAt(stringList,-1) == NULL);
 }
+
+void test_asArray() {
+	String *str;
+	int len_of_array = asArray(stringList,&str);
+	assert(len_of_array == 3);
+	assert(str[0] == "I am node1");
+	assert(str[1] == "I am node2");
+	assert(str[2] == "I am Last node");
+}

@@ -20,6 +20,8 @@ void* get_first_element(LinkedList list);
 void* get_last_element(LinkedList list);
 void traverse(LinkedList, void (*)(void *data));
 void * getElementAt(LinkedList, int );
+int indexOf(LinkedList, void *);
+int asArray(LinkedList, void **);
 
 int parseInt(void *ref);
 char* parseString(void *ref);

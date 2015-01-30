@@ -58,10 +58,37 @@ void* getElementAt(LinkedList list, int index) {
 	Node *walker = list.head;
 	int i;
 	if(index >= list.count || index < 0) return NULL;
-	for (i = 0; i < index; ++i) {
+	for (i = 1; i <= index; ++i) {
 		walker = walker->next;
 	}
 	return walker->data;
 }
 
+int indexOf(LinkedList list, void *element) {
+	// Node *walker = list.head;
+	// int i;
+	// while(!walker) {
+	// 	walker->data
+	// }
+}
+
+Node* getNodeAt(LinkedList list, int index){
+	Node *walker = list.head; int i;
+	for (i = 1; i <= index; ++i) {
+		walker = walker->next;
+	}
+	return walker;	
+}
+
+int asArray(LinkedList list, void **result) {
+	int i; 
+	Node *this;
+	void **r = malloc(list.count);
+	for(i=0; i<list.count; ++i){
+		this = getNodeAt(list,i);
+		r[i] = this->data;
+	}
+	*result = r;
+	return list.count;
+}
 
